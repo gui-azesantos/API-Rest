@@ -25,23 +25,34 @@ namespace ApiRest {
         public void ConfigureServices (IServiceCollection services) {
             services.AddDbContext<ApplicationDbContext> (options => options.UseMySql (Configuration.GetConnectionString ("DefaultConnection")));
             services.AddControllers ();
-        }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment ()) {
-                app.UseDeveloperExceptionPage ();
+            //Swagger
+            services.AddSwaggerGen (config => {
+                    config.SwaggerDoc ("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API de Produtos", Version = "v1" });
+                    });
             }
 
-            app.UseHttpsRedirection ();
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure (IApplicationBuilder app, IWebHostEnvironment env) {
+                if (env.IsDevelopment ()) {
+                    app.UseDeveloperExceptionPage ();
+                }
 
-            app.UseRouting ();
+                app.UseHttpsRedirection ();
 
-            app.UseAuthorization ();
+                app.UseRouting ();
 
-            app.UseEndpoints (endpoints => {
-                endpoints.MapControllers ();
-            });
+                app.UseAuthorization ();
+
+                app.UseEndpoints (endpoints => {
+                    endpoints.MapControllers ();
+                });
+                app.UseSwagger(config => {
+                config.RouteTemplate = "guilherme/{documentName}/swagger.json"; 
+                }); //Gerar um arquivo JSON - Swagger.json
+                app.UseSwaggerUI(config => { //View HTML do Swagger
+                    config.SwaggerEndpoint("/guilherme/v1/swagger.json" , "v1 docs");
+                });
+            }
         }
     }
-}

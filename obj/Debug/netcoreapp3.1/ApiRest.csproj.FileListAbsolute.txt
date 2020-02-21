@@ -38,3 +38,8 @@ C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\obj\Debug\netcoreapp3.1\ApiRest
 C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\obj\Debug\netcoreapp3.1\ApiRest.csproj.CopyComplete
 C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\obj\Debug\netcoreapp3.1\ApiRest.dll
 C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\obj\Debug\netcoreapp3.1\ApiRest.pdb
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\obj\Debug\netcoreapp3.1\ApiRest.MvcApplicationPartsAssemblyInfo.cs
