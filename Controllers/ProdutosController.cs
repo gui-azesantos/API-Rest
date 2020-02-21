@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using ApiRest.Data;
+using ApiRest.HATEOAS;
 using ApiRest.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,16 @@ namespace ApiRest.Controllers {
     public class ProdutosController : ControllerBase {
 
         private readonly ApplicationDbContext database;
+        private HATEOAS.HATEOAS HATEOAS;
 
         public ProdutosController (ApplicationDbContext database) {
+
             this.database = database;
+            HATEOAS = new HATEOAS.HATEOAS ("localhost:5001/api/v1/produtos");
+            HATEOAS.AddAction("GET_INFO", "GET");
+            HATEOAS.AddAction ("DELETE_PRODUCT", "DELETE");
+            HATEOAS.AddAction ("EDIT_PRODUCT", "PATCH");
+
         }
 
         [HttpGet]
@@ -24,8 +32,12 @@ namespace ApiRest.Controllers {
         [HttpGet ("{id}")]
         public IActionResult Get (int id) {
             try {
-                var produtos = database.Produtos.First (p => p.Id == id);
-                return Ok (produtos);
+                Produto produtos = database.Produtos.First (p => p.Id == id);
+                ProdutoContainer produtoHATEOAS = new ProdutoContainer ();
+                //HATEOAS.AddAction(GET_INFO)
+                produtoHATEOAS.produto = produtos;
+                produtoHATEOAS.links = HATEOAS.GetActions();
+                return Ok (produtoHATEOAS);
             } catch (Exception) {
 
                 Response.StatusCode = 404;
@@ -102,6 +114,11 @@ namespace ApiRest.Controllers {
         public class ProdutoTemp {
             public string Nome { get; set; }
             public float Preco { get; set; }
+        }
+        public class ProdutoContainer {
+            public Produto produto;
+            public Link[] links;
+
         }
     }
 }
