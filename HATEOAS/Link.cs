@@ -1,4 +1,4 @@
-namespace ApiRest.HATEOAS {
+/* namespace ApiRest.HATEOAS {
     public class Link {
 
         public string href { get; set; }
@@ -17,4 +17,4 @@ namespace ApiRest.HATEOAS {
         
 
     }
-}
+} */

@@ -1,7 +1,8 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 using System.Linq;
 using ApiRest.Data;
+using ApiRest.HATEOAS;
 using ApiRest.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,27 +12,41 @@ namespace ApiRest.Controllers {
     public class ProdutosController : ControllerBase {
 
         private readonly ApplicationDbContext database;
+        private HATEOAS.HATEOAS HATEOAS;
 
         public ProdutosController (ApplicationDbContext database) {
 
             this.database = database;
-
+            HATEOAS = new HATEOAS.HATEOAS ("localhost:5001/api/v1/produtos");
+            HATEOAS.AddAction ("GET_INFO", "GET");
+            HATEOAS.AddAction ("DELETE_PRODUCT", "DELETE");
+            HATEOAS.AddAction ("EDIT_PRODUCT", "PATCH");
         }
 
         [HttpGet]
         public IActionResult Get () {
             var produtos = database.Produtos.ToList ();
-
-            return Ok (produtos);
-
+            List<ProdutoContainer> produtosHateoas = new List<ProdutoContainer> ();
+            foreach (var prod in produtos) {
+                ProdutoContainer produtoHateoas = new ProdutoContainer ();
+                produtoHateoas.produto = prod;
+                produtoHateoas.links = HATEOAS.GetActions (prod.Id.ToString ());
+                produtosHateoas.Add (produtoHateoas);
+                return Ok (produtoHateoas);
+                
+            }
+            return Ok (produtos); //Status code = 200 && Dados 
         }
 
         [HttpGet ("{id}")]
         public IActionResult Get (int id) {
             try {
                 Produto produto = database.Produtos.First (p => p.Id == id);
-
-                return Ok (produto);
+                ProdutoContainer produtoHATEOAS = new ProdutoContainer ();
+                //HATEOAS.AddAction(GET_INFO)
+                produtoHATEOAS.produto = produto;
+                produtoHATEOAS.links = HATEOAS.GetActions (produto.Id.ToString ());
+                return Ok (produtoHATEOAS);
             } catch (Exception) {
 
                 Response.StatusCode = 404;
@@ -109,6 +124,10 @@ namespace ApiRest.Controllers {
             public string Nome { get; set; }
             public float Preco { get; set; }
         }
+        public class ProdutoContainer {
+            public Produto produto;
+            public Link[] links;
 
+        }
     }
-}
+} */
