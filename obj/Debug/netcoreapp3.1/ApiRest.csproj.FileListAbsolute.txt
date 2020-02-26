@@ -43,3 +43,10 @@ C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Swashbu
 C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\obj\Debug\netcoreapp3.1\ApiRest.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\GEDO\Desktop\Visual Studio Code\ApiRest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

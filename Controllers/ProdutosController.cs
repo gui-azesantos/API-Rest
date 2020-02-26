@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using ApiRest.Data;
 using ApiRest.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiRest.Controllers {
     [Route ("api/v1/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Gerente")]
     public class ProdutosController : ControllerBase {
 
         private readonly ApplicationDbContext database;
