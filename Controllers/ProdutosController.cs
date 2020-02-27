@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiRest.Controllers {
     [Route ("api/v1/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Gerente")]
+    [Authorize(Roles ="Admin")]
     public class ProdutosController : ControllerBase {
 
         private readonly ApplicationDbContext database;
@@ -18,6 +18,10 @@ namespace ApiRest.Controllers {
 
             this.database = database;
 
+        }
+        [HttpGet("teste")]
+        public IActionResult TesteClaims(){
+         return Ok (HttpContext.User.Claims.First(claim => claim.Type.ToString().Equals("id", StringComparison.InvariantCultureIgnoreCase)).Value);
         }
 
         [HttpGet]
