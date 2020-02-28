@@ -1,4 +1,4 @@
-/* using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace ApiRest.HATEOAS {
     public class HATEOAS {
@@ -22,7 +22,7 @@ namespace ApiRest.HATEOAS {
 
         }
         public Link[] GetActions (string sufix) {
-            Link[] tempLinks = actions.ToArray ();
+            Link[] tempLinks = new Link[actions.Count];
             for (int i = 0; i < tempLinks.Length; i++) {
                 tempLinks[i]= new Link(actions[i].href, actions[i].rel, actions[i].method);
             }
@@ -35,4 +35,4 @@ namespace ApiRest.HATEOAS {
         }
 
     }
-} */
+}
